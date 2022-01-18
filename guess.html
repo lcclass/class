@@ -21,7 +21,7 @@
 
 			#mine {
 				background-color: aqua;
-				font-size: 30px;
+				font-size: 35px;
 			}
 
 			#computer {
@@ -29,7 +29,7 @@
 			}
 
 			input {
-				font-size: 16px;
+				font-size: 20px;
 			}
 		</style>
 	</head>
@@ -50,10 +50,13 @@
 		</div>
 		<p style="font-size: 20px;" id="demo" align="center">&nbsp;</p>
 		<br>
-		<p id="cnt" align="right">计数器：0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		<p id="cnt" align="center">计数器：0</p>
+		<p id="score" align="center">我的得分：0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电脑得分：0</p>
 		<script>
-			var x;
-			var cnt=0;
+			var x, myscore = 0,
+				comscore = 0;
+			var cnt = 0;
+
 			function computer() {
 				var r = Math.random() * 3;
 				if (r < 1) {
@@ -75,13 +78,17 @@
 				} else if (x == "scissors") {
 					document.getElementById("com").innerHTML = "剪刀";
 					x = "你赢了";
+					myscore++;
 				} else {
 					document.getElementById("com").innerHTML = "布";
 					x = "你输了";
+					comscore++;
 				}
 				document.getElementById("demo").innerHTML = x;
 				cnt++;
-				document.getElementById("cnt").innerHTML ="计数器："+cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+				document.getElementById("cnt").innerHTML = "计数器：" + cnt;
+				document.getElementById("score").innerHTML = "我的得分：" + myscore + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电脑得分：" +
+					comscore;
 			}
 
 			function scissors() {
@@ -90,16 +97,20 @@
 				if (x == "rock") {
 					document.getElementById("com").innerHTML = "石头";
 					x = "你输了";
+					comscore++;
 				} else if (x == "scissors") {
 					document.getElementById("com").innerHTML = "剪刀";
 					x = "平局";
 				} else {
 					document.getElementById("com").innerHTML = "布";
 					x = "你赢了";
+					myscore++;
 				}
 				document.getElementById("demo").innerHTML = x;
 				cnt++;
-				document.getElementById("cnt").innerHTML = "计数器："+cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+				document.getElementById("cnt").innerHTML = "计数器：" + cnt;
+				document.getElementById("score").innerHTML = "我的得分：" + myscore + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电脑得分：" +
+					comscore;
 			}
 
 			function cloth() {
@@ -108,16 +119,20 @@
 				if (x == "rock") {
 					document.getElementById("com").innerHTML = "石头";
 					x = "你赢了";
+					myscore++;
 				} else if (x == "scissors") {
 					document.getElementById("com").innerHTML = "剪刀";
 					x = "你输了";
+					comscore++;
 				} else {
 					document.getElementById("com").innerHTML = "布";
 					x = "平局";
 				}
 				document.getElementById("demo").innerHTML = x;
 				cnt++;
-				document.getElementById("cnt").innerHTML = "计数器："+cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+				document.getElementById("cnt").innerHTML = "计数器：" + cnt;
+				document.getElementById("score").innerHTML = "我的得分：" + myscore + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电脑得分：" +
+					comscore;
 			}
 		</script>
 	</body>
