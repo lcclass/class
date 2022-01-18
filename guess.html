@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>石头剪刀布</title>
+		<style>
+			#box {
+				margin: 0 auto;
+				text-align: center;
+				width: 600px;
+				height: 300px;
+				border: 3px solid black;
+			}
+
+			#box>div {
+				margin: 0 auto;
+				width: 300px;
+				height: 300px;
+				float: left;
+			}
+
+			#mine {
+				background-color: aqua;
+				font-size: 30px;
+			}
+
+			#computer {
+				background-color: aquamarine;
+			}
+
+			input {
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="mine">
+				<p style="font-size: 20px;">请点击按钮选择</p>
+				<input type="button" value="石头" onclick="rock()" /><br>
+				<input type="button" value="剪刀" onclick="scissors()" /><br>
+				<input type="button" value="布" onclick="cloth()" />
+				<p style="font-size: 20px;" id="m" align="center"></p>
+			</div>
+			<div id="computer">
+				<br><br>
+				<p style="font-size: 20px;">电脑出的是</p>
+				<p style="font-size: 20px;" id="com" align="center"></p>
+			</div>
+		</div>
+		<p style="font-size: 20px;" id="demo" align="center">&nbsp;</p>
+		<br>
+		<p id="cnt" align="right">计数器：0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		<script>
+			var x;
+			var cnt=0;
+			function computer() {
+				var r = Math.random() * 3;
+				if (r < 1) {
+					r = "rock";
+				} else if (r < 2) {
+					r = "scissors";
+				} else {
+					r = "cloth";
+				}
+				return r;
+			}
+
+			function rock() {
+				document.getElementById("m").innerHTML = "你出的是" + "<br>" + "石头";
+				x = computer();
+				if (x == "rock") {
+					document.getElementById("com").innerHTML = "石头";
+					x = "平局";
+				} else if (x == "scissors") {
+					document.getElementById("com").innerHTML = "剪刀";
+					x = "你赢了";
+				} else {
+					document.getElementById("com").innerHTML = "布";
+					x = "你输了";
+				}
+				document.getElementById("demo").innerHTML = x;
+				cnt++;
+				document.getElementById("cnt").innerHTML ="计数器："+cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			}
+
+			function scissors() {
+				document.getElementById("m").innerHTML = "你出的是" + "<br>" + "剪刀";
+				x = computer();
+				if (x == "rock") {
+					document.getElementById("com").innerHTML = "石头";
+					x = "你输了";
+				} else if (x == "scissors") {
+					document.getElementById("com").innerHTML = "剪刀";
+					x = "平局";
+				} else {
+					document.getElementById("com").innerHTML = "布";
+					x = "你赢了";
+				}
+				document.getElementById("demo").innerHTML = x;
+				cnt++;
+				document.getElementById("cnt").innerHTML = "计数器："+cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			}
+
+			function cloth() {
+				document.getElementById("m").innerHTML = "你出的是" + "<br>" + "布";
+				x = computer();
+				if (x == "rock") {
+					document.getElementById("com").innerHTML = "石头";
+					x = "你赢了";
+				} else if (x == "scissors") {
+					document.getElementById("com").innerHTML = "剪刀";
+					x = "你输了";
+				} else {
+					document.getElementById("com").innerHTML = "布";
+					x = "平局";
+				}
+				document.getElementById("demo").innerHTML = x;
+				cnt++;
+				document.getElementById("cnt").innerHTML = "计数器："+cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			}
+		</script>
+	</body>
+</html>
