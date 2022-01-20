@@ -37,10 +37,10 @@
 		<div id="box">
 			<div id="mine">
 				<p style="font-size: 20px;">请点击按钮选择</p>
-				<input type="button" value="石头" onclick="rock()" /><br>
-				<input type="button" value="剪刀" onclick="scissors()" /><br>
-				<input type="button" value="布" onclick="cloth()" />
-				<p style="font-size: 20px;" id="m" align="center"></p>
+				<input type="button" value="石头" onclick="mychoice(1)" /><br>
+				<input type="button" value="剪刀" onclick="mychoice(2)" /><br>
+				<input type="button" value="布" onclick="mychoice(3)" />
+				<p style="font-size: 20px;" id="me" align="center"></p>
 			</div>
 			<div id="computer">
 				<br><br>
@@ -52,6 +52,9 @@
 		<br>
 		<p id="cnt" align="center">计数器：0</p>
 		<p id="score" align="center">我的得分：0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电脑得分：0</p>
+		<div style="text-align: center;">
+			<input type="button" value="重置" onclick="Reset()" />
+		</div>
 		<script>
 			var x, myscore = 0,
 				comscore = 0;
@@ -59,18 +62,28 @@
 
 			function computer() {
 				var r = Math.random() * 3;
+				var result;
 				if (r < 1) {
-					r = "rock";
+					result = "rock";
 				} else if (r < 2) {
-					r = "scissors";
+					result = "scissors";
 				} else {
-					r = "cloth";
+					result = "cloth";
 				}
-				return r;
+				return result;
+			}
+
+			function mychoice(a) {
+				if (a == 1)
+					rock();
+				if (a == 2)
+					scissors();
+				if (a == 3)
+					cloth();
 			}
 
 			function rock() {
-				document.getElementById("m").innerHTML = "你出的是" + "<br>" + "石头";
+				document.getElementById("me").innerHTML = "你出的是" + "<br>" + "石头";
 				x = computer();
 				if (x == "rock") {
 					document.getElementById("com").innerHTML = "石头";
@@ -92,7 +105,7 @@
 			}
 
 			function scissors() {
-				document.getElementById("m").innerHTML = "你出的是" + "<br>" + "剪刀";
+				document.getElementById("me").innerHTML = "你出的是" + "<br>" + "剪刀";
 				x = computer();
 				if (x == "rock") {
 					document.getElementById("com").innerHTML = "石头";
@@ -114,7 +127,7 @@
 			}
 
 			function cloth() {
-				document.getElementById("m").innerHTML = "你出的是" + "<br>" + "布";
+				document.getElementById("me").innerHTML = "你出的是" + "<br>" + "布";
 				x = computer();
 				if (x == "rock") {
 					document.getElementById("com").innerHTML = "石头";
@@ -130,6 +143,15 @@
 				}
 				document.getElementById("demo").innerHTML = x;
 				cnt++;
+				document.getElementById("cnt").innerHTML = "计数器：" + cnt;
+				document.getElementById("score").innerHTML = "我的得分：" + myscore + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电脑得分：" +
+					comscore;
+			}
+
+			function Reset() {
+				cnt = 0;
+				myscore = 0;
+				comscore = 0;
 				document.getElementById("cnt").innerHTML = "计数器：" + cnt;
 				document.getElementById("score").innerHTML = "我的得分：" + myscore + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电脑得分：" +
 					comscore;
